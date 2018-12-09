@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Design Challenge 3</title>
+
+    <!-- styles -->
+    <link rel="stylesheet" type="text/css" href="./lib/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="./lib/css/dragula.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="jumbotron">
+            <h1>Aggregate Line Charts</h1>
+        </div>
+
+        <canvas id="js-chart" class="mb-5"></canvas>
+
+        <div class="row" id="js-cardlst">
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">Individual</div>
+                    <ul class="list-group list-group-flush" id="js-indv"></ul>
+                </div>
+            </div>
+
+            <div class="col-3">
+                <div class="card">
+                    <div class="card-header">
+                        Group 1
+                    </div>
+                    <ul class="list-group list-group-flush" id="group1">
+                        <li class="list-group-item">Group 1</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- libs -->
+    <script type="text/javascript" src="./lib/js/jquery-3.3.1.slim.min.js"></script>
+    <script type="text/javascript" src="./lib/js/popper.min.js"></script>
+    <script type="text/javascript" src="./lib/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="./lib/js/Chart.bundle.min.js"></script>
+    <script type="text/javascript" src="./lib/js/dragula.min.js"></script>
+
+    <!-- project scripts -->
+    <script type="text/javascript" src="./src/random.js"></script>
+    <script type="text/javascript" src="./src/aggregate_lines.js"></script>
+    <script type="text/javascript" src="./src/script.js"></script>
+</body>
+</html>
