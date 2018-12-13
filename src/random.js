@@ -1,26 +1,14 @@
 'use strict';
 
-// array of colors for getting a random color
-const COLORS = [
-    '#4dc9f6',
-    '#f67019',
-    '#f53794',
-    '#537bc4',
-    '#acc236',
-    '#166a8f',
-    '#00a950',
-    '#58595b',
-    '#8549ba'
-];
-
 function randomColor(brightness){
-    brightness = 50;
+  brightness = 50;
   function randomChannel(brightness){
     var r = 255-brightness;
     var n = 0|((Math.random() * r) + brightness);
     var s = n.toString(16);
     return (s.length==1) ? '0'+s : s;
   }
+
   return '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness);
 }
 
@@ -58,13 +46,12 @@ function getDatapoints(x, low, high) {
  *
  **/
 function getRandomDataset(x, indx, low, high) {
-    const colorIndex = getRandomInt(0, COLORS.length - 1);
-    const color = COLORS[colorIndex];
+    const color = randomColor(220);
     const label = '#' + String(indx);
     const dataset = {
         label: label,
-        backgroundColor: randomColor(220),
-        borderColor: randomColor(220),
+        backgroundColor: color,
+        borderColor: color,
         data: getDatapoints(x, low, high),
         fill: false,
         lineTension: 0

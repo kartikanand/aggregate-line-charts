@@ -193,7 +193,7 @@ class List {
         const listLength = $(domList).find("li").length;
 
         // add dummy item to group if length of group is 1
-        if (listLength <= 1) {
+        if (listLength < 1) {
             $(`<li class="list-group-item dummy-item">Add items here</li>`).appendTo(domList);
         }
     }
@@ -275,10 +275,13 @@ class List {
             mergedData.push(dataSum/datasetLength);
         }
 
+        // get a random color
+        const color = randomColor(220);
+
         return  {
             label: label,
-            backgroundColor: randomColor(220),
-            borderColor: randomColor(220),
+            backgroundColor: color,
+            borderColor: color,
             data: mergedData,
             fill: false,
             lineTension: 0
