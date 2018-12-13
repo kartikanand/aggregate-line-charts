@@ -13,6 +13,17 @@ const COLORS = [
     '#8549ba'
 ];
 
+function randomColor(brightness){
+    brightness = 50;
+  function randomChannel(brightness){
+    var r = 255-brightness;
+    var n = 0|((Math.random() * r) + brightness);
+    var s = n.toString(16);
+    return (s.length==1) ? '0'+s : s;
+  }
+  return '#' + randomChannel(brightness) + randomChannel(brightness) + randomChannel(brightness);
+}
+
 /**
  * Returns a random integer between min (inclusive) and max (inclusive).
  * The value is no lower than min (or the next integer greater than min
@@ -49,17 +60,20 @@ function getDatapoints(x, low, high) {
 function getRandomDataset(x, indx, low, high) {
     const colorIndex = getRandomInt(0, COLORS.length - 1);
     const color = COLORS[colorIndex];
-
+    const label = '#' + String(indx);
     const dataset = {
-        label: '#' + String(indx),
-        backgroundColor: color,
-        borderColor: color,
+        label: label,
+        backgroundColor: randomColor(220),
+        borderColor: randomColor(220),
         data: getDatapoints(x, low, high),
         fill: false,
         lineTension: 0
     };
 
-    return dataset;
+    return {
+        label: label,
+        dataset: dataset
+    };
 }
 
 /*
@@ -69,10 +83,11 @@ function getRandomDataset(x, indx, low, high) {
  *
  **/
 function getRandomDatasets(x, low, high, n) {
-    const datasets = [];
+    const datasets = {};
 
     for (let i = 0; i < n; ++i) {
-        datasets.push(getRandomDataset(x, i, low, high));
+        const {label, dataset} = getRandomDataset(x, i, low, high);
+        datasets[label] = dataset;
     }
 
     return datasets;
