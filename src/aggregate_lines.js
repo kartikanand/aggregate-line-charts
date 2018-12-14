@@ -40,7 +40,7 @@ class AggregateLineCharts {
         this.cards = {};
 
         // get random datasets originally and save for reset
-        this.origDatasets = getRandomDatasets(10, -100, 100, 50);
+        this.origDatasets = getRandomDatasets(10, -100, 100, 20);
         this.currDatasets = {};
 
         // save drag drop list for further adding new groups
